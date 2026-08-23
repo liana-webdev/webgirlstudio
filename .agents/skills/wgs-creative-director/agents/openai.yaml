@@ -1,4 +1,0 @@
-interface:
-  display_name: "WGS Creative Director"
-  short_description: "Develop and critique distinct creative territories"
-  default_prompt: "Use $wgs-creative-director to develop genuinely distinct creative territories for this project."

@@ -1,4 +1,4 @@
-# Face Not Fake — Source Note and Incomplete Brief
+# Face Not Fake — source note and incomplete brief
 
 Status: incomplete; not approved for creative production.
 

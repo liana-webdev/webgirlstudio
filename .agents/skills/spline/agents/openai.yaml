@@ -1,4 +1,0 @@
-interface:
-  display_name: "Spline"
-  short_description: "Evaluate and integrate authored Spline scenes"
-  default_prompt: "Use $spline to assess and plan a performant authored 3D scene."

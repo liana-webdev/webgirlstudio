@@ -1,4 +1,0 @@
-interface:
-  display_name: "WGS CRM Ops"
-  short_description: "Operate the WGS commercial pipeline"
-  default_prompt: "Use $wgs-crm-ops to prepare a source-backed pipeline update without inventing CRM data."

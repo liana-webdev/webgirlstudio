@@ -1,4 +1,0 @@
-interface:
-  display_name: "Three.js"
-  short_description: "Evaluate and implement custom Three.js systems"
-  default_prompt: "Use $threejs to assess whether this project truly requires a custom 3D system."

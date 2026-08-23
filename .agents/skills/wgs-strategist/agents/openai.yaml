@@ -1,4 +1,0 @@
-interface:
-  display_name: "WGS Strategist"
-  short_description: "Research and structure WGS strategy work"
-  default_prompt: "Use $wgs-strategist to turn this business problem into a sourced strategy."

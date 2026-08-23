@@ -1,4 +1,0 @@
-interface:
-  display_name: "WGS Motion Direction"
-  short_description: "Specify purposeful motion and interaction"
-  default_prompt: "Use $wgs-motion-direction to specify purposeful, accessible motion for this interface."

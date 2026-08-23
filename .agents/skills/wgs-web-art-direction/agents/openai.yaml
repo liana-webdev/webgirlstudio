@@ -1,4 +1,0 @@
-interface:
-  display_name: "WGS Web Art Direction"
-  short_description: "Translate strategy into web-native art direction"
-  default_prompt: "Use $wgs-web-art-direction to define a web-native visual direction for this project."

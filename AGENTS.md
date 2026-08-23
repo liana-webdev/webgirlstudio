@@ -1,62 +1,50 @@
-# Web Girl Studio repository guide
+# Web Girl Studio — lianawebdev repository guide
 
-This repository belongs to Web Girl Studio (WGS).
+This repository is the classic-hosting implementation of the Web Girl Studio
+website. Reusable studio policy and skills are global; this file describes the
+local project layer.
 
-Before substantial WGS strategy, design, development, outreach, portfolio,
-client-delivery, or creative-direction work:
+## Required source sequence
 
-1. Read `docs/wgs/00-start-here/WGS-SOURCE-MANIFEST.md`.
-2. Identify and read the relevant canonical WGS documents.
-3. Read the current project-specific approved brief and specification.
-4. Use the relevant repo skill in `.agents/skills/`.
-5. Inspect the existing implementation before proposing new architecture.
+1. Use the installed `wgs-source-check` skill.
+2. Read the global Source Manifest resolved through its installation locator.
+3. Read `docs/wgs-local/SOURCE-OVERLAY.md`.
+4. Read the relevant project record under `docs/projects/`.
+5. Inspect current implementation truth before proposing changes.
 
-Do not treat the newest user prompt as the entire source of truth when canonical
-project sources exist. A new prompt can supersede a source only when it clearly
-states that intent or the user resolves the conflict.
+Canonical global source:
 
-## Working principles
+`C:\Users\liana\Documents\Web Girl Studio\wgs-studio-os`
 
-- Strategy precedes visual execution.
-- Structure precedes polish.
-- Purpose precedes decoration.
-- Proof precedes claims.
-- Mobile is designed, not compressed.
-- Motion must orient, reveal, explain, respond, or create useful atmosphere.
-- Componentise repeated behaviour, not every visual idea.
-- Preserve established WGS decisions unless the task explicitly changes them.
-- Do not invent business facts, client approval, outcomes, testimonials, prices,
-  research findings, CRM data, or project status.
-- Mark unknowns and incomplete decisions clearly.
-- Flag source conflicts instead of silently choosing the convenient instruction.
-- Never use archive material as current policy when a newer source exists.
+Do not treat the newest prompt as the entire source of truth when approved global
+or local project sources exist. Flag conflicts and missing approval.
 
-## Current technical context
+## Local technical rules
 
 - Classic PHP 8+, semantic HTML, standalone CSS, and vanilla JavaScript.
-- No package manager, React runtime, or bundler is currently part of production.
-- Shared PHP components live in `components/`.
-- Shared browser behaviour lives in `assets/`; reusable foundations belong in
-  `assets/lib/` unless the stack changes through an approved project decision.
-- Portfolio data and project truth notes live in `content/projects.php`.
+- No package manager, React runtime, or bundler is part of production.
+- Shared PHP output belongs in `components/`.
+- Shared browser behavior belongs in `assets/`; local foundations live in `assets/lib/`.
+- Portfolio data and project status live in `content/projects.php`.
+- Public offer and pricing remain implementation truth in `index.php`.
 - Preserve form security, analytics, metadata, routes, and accessibility.
+- Do not add GSAP, Motion, Three.js, Spline, or another runtime library merely
+  because a global skill exists.
 
-## Quick routing
+## Local project knowledge
 
-- Studio position and offer: `docs/wgs/01-studio/`
-- Discovery, UX, and conversion: `docs/wgs/02-strategy/`
-- Creative direction and motion: `docs/wgs/03-creative/`
-- Design rules and reusable systems: `docs/wgs/04-design/`
-- Client delivery and QA: `docs/wgs/05-delivery/`
-- Outreach and CRM operations: `docs/wgs/06-growth/`
-- Portfolio and Figma archive work: `docs/wgs/07-portfolio/`
-- Historical context only: `docs/wgs/99-archive/`
+- Source overlay: `docs/wgs-local/SOURCE-OVERLAY.md`
+- Technical context: `docs/wgs-local/TECHNICAL-CONTEXT.md`
+- QA commands: `docs/wgs-local/QA-COMMANDS.md`
+- Project records: `docs/projects/<project-slug>/`
+
+Repo-scoped skills are reserved for genuinely lianawebdev-specific workflows.
+Do not duplicate the installed global WGS skills under `.agents/skills`.
 
 ## Completion gate
 
-- Run the QA relevant to the change.
-- Validate responsive behaviour and reduced motion where applicable.
+- Run the global QA standard and local QA commands relevant to the change.
+- Validate responsive behavior and reduced motion where applicable.
 - Test forms, routes, analytics, SEO, and performance when touched.
-- Report what was verified, what remains unknown, and any manual step.
-
-Start at `docs/wgs/00-start-here/WGS-SOURCE-MANIFEST.md`.
+- Report verified behavior, unknowns, and manual steps.
+- Do not modify visible production pages unless the task explicitly authorizes it.

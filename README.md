@@ -3,17 +3,17 @@
 This folder is the classic-hosting version of the Web Girl Studio landing page.
 It uses PHP 8+, semantic HTML, standalone CSS and vanilla JavaScript.
 
-## Studio operating system
+## WGS Studio OS integration
 
-Studio strategy, creative direction, delivery standards, reusable workflows and
-repo-scoped skills live in the non-public operating-system layer. Start with
-`AGENTS.md`, then follow `docs/wgs/00-start-here/WGS-SOURCE-MANIFEST.md`.
-These files do not change the public website or its production runtime.
+Reusable studio policy and skills live in the independent global repository at
+`C:\Users\liana\Documents\Web Girl Studio\wgs-studio-os`. This repository keeps
+only its local source overlay, technical context, QA commands, and project facts.
+Start with `AGENTS.md` and `docs/wgs-local/SOURCE-OVERLAY.md`.
 
-Validate the operating-system structure and skill frontmatter with:
+Validate the local/global integration with:
 
 ```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File scripts/validate-wgs-os.ps1
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/validate-wgs-integration.ps1
 ```
 
 ## Deploy

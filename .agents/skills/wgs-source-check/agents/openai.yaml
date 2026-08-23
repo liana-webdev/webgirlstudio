@@ -1,4 +1,0 @@
-interface:
-  display_name: "WGS Source Check"
-  short_description: "Route WGS work through authoritative sources"
-  default_prompt: "Use $wgs-source-check to identify the authoritative WGS sources before starting this task."

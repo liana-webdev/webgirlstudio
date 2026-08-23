@@ -1,4 +1,0 @@
-interface:
-  display_name: "WGS Figma Audit"
-  short_description: "Audit and route legacy Figma concepts"
-  default_prompt: "Use $wgs-figma-audit to score and route this old Figma work."
