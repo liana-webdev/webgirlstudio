@@ -1,0 +1,26 @@
+# Local credentials and environment
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.mcp-auth*
+*motion-plus-token*
+
+# Tool and package caches
+node_modules/
+.cache/
+.agents/.cache/
+.codex/
+.motion/
+tmp/
+
+# Runtime/private data
+storage/*.jsonl
+storage/sess_*
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+*.swp
+*.tmp

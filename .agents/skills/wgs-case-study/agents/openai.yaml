@@ -1,0 +1,4 @@
+interface:
+  display_name: "WGS Case Study"
+  short_description: "Build honest proof-led WGS case studies"
+  default_prompt: "Use $wgs-case-study to structure this project as an evidence-led case study."

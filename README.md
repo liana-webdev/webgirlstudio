@@ -3,6 +3,19 @@
 This folder is the classic-hosting version of the Web Girl Studio landing page.
 It uses PHP 8+, semantic HTML, standalone CSS and vanilla JavaScript.
 
+## Studio operating system
+
+Studio strategy, creative direction, delivery standards, reusable workflows and
+repo-scoped skills live in the non-public operating-system layer. Start with
+`AGENTS.md`, then follow `docs/wgs/00-start-here/WGS-SOURCE-MANIFEST.md`.
+These files do not change the public website or its production runtime.
+
+Validate the operating-system structure and skill frontmatter with:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/validate-wgs-os.ps1
+```
+
 ## Deploy
 
 1. Upload the contents of this folder to the public directory of a PHP 8+ host.

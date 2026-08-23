@@ -1,0 +1,4 @@
+interface:
+  display_name: "WGS QA"
+  short_description: "Validate WGS sites before completion"
+  default_prompt: "Use $wgs-qa to run the relevant production checks for this work."

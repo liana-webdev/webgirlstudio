@@ -1,0 +1,4 @@
+interface:
+  display_name: "Motion for React"
+  short_description: "Choose and implement Motion for React"
+  default_prompt: "Use $motion to plan React component and layout animation for this project."

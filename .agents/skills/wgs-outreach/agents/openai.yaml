@@ -1,0 +1,4 @@
+interface:
+  display_name: "WGS Outreach"
+  short_description: "Prepare evidence-based personalised outreach"
+  default_prompt: "Use $wgs-outreach to research and draft responsible personalised outreach."

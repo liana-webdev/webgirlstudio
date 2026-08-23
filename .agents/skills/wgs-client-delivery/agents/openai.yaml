@@ -1,0 +1,4 @@
+interface:
+  display_name: "WGS Client Delivery"
+  short_description: "Run clear client delivery and approvals"
+  default_prompt: "Use $wgs-client-delivery to plan the delivery, approvals, and handoff for this project."

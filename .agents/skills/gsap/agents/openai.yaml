@@ -1,0 +1,4 @@
+interface:
+  display_name: "GSAP"
+  short_description: "Choose and implement GSAP animation responsibly"
+  default_prompt: "Use $gsap to plan or implement a coordinated GSAP animation for this project."
