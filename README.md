@@ -37,6 +37,37 @@ only to `hello@webgirl.studio`, and places the validated visitor address in
 `Reply-To`. Attribution is retained in session storage only and included in the
 notification. Never place mailbox credentials in this repository.
 
+## Email open tracking
+
+Future outreach emails can include a unique 1-by-1 image served by
+`/email-track/open.php`. The endpoint writes the recipient ID, UTC timestamp,
+and a coarse mail-client signal to `storage/email-opens.jsonl`. It does not log
+the recipient email address or IP address.
+
+Set `WGS_EMAIL_TRACKING_USER` and `WGS_EMAIL_TRACKING_PASSWORD` in the production
+environment, then view the private dashboard at
+`https://webgirl.studio/email-track/dashboard.php`. The dashboard fails closed
+when either credential is absent. Use a long, unique password and keep it out of
+Git. `storage/` must remain writable and blocked from direct web access.
+
+Generate a unique pixel for a CRM lead before sending an HTML email:
+
+```bash
+php scripts/tracking-pixel.php wgs-123 september-2026
+```
+
+Place the returned HTML at the end of the email's HTML body and keep the normal
+plain-text body as the fallback. Record the full generated recipient ID with the
+lead in the CRM so dashboard results can be matched without storing contact data
+on the site. Never reuse a recipient ID for another lead or campaign.
+
+Open tracking is approximate. Image blocking can hide a real read, while privacy
+proxies, forwarding, previews, and security scanners can create a load without a
+person reading the message. Existing plain-text sends cannot be tracked
+retroactively. Because the lead ID and timestamps can still become personal data
+when matched to the CRM, confirm the campaign's lawful basis, privacy notice, and
+retention period before production use.
+
 ## Portfolio routes
 
 - `/work/` - proof-led index featuring the live Fortepiano Academy project
