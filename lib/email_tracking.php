@@ -7,6 +7,35 @@ function wgs_tracking_normalize_id(mixed $value): string
     return preg_match('/^[a-z0-9][a-z0-9_-]{2,79}$/', $id) === 1 ? $id : '';
 }
 
+function wgs_tracking_dashboard_credentials(?string $configPath = null): array
+{
+    if ($configPath === null) {
+        $user = trim((string) getenv('WGS_EMAIL_TRACKING_USER'));
+        $password = (string) getenv('WGS_EMAIL_TRACKING_PASSWORD');
+        if ($user !== '' && $password !== '') {
+            return [$user, $password];
+        }
+
+        $configuredPath = trim((string) getenv('WGS_EMAIL_TRACKING_CONFIG'));
+        $configPath = $configuredPath !== ''
+            ? $configuredPath
+            : dirname(__DIR__, 2) . '/wgs-private/email-tracking.php';
+    }
+
+    if (!is_file($configPath) || !is_readable($configPath)) {
+        return ['', ''];
+    }
+
+    $config = require $configPath;
+    if (!is_array($config)) {
+        return ['', ''];
+    }
+
+    $user = trim((string) ($config['username'] ?? ''));
+    $password = (string) ($config['password'] ?? '');
+    return $user !== '' && $password !== '' ? [$user, $password] : ['', ''];
+}
+
 function wgs_tracking_log_path(): string
 {
     $configured = trim((string) getenv('WGS_EMAIL_TRACKING_LOG'));

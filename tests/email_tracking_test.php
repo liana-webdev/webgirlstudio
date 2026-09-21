@@ -20,6 +20,23 @@ assert_same('Gmail image proxy', wgs_tracking_client('GoogleImageProxy'), 'Gmail
 assert_same('https://webgirl.studio/email-track/open.php?id=campaign-wgs-123-a1b2c3d4', wgs_tracking_pixel_url('campaign-wgs-123-a1b2c3d4'), 'Pixel URL is stable.');
 assert_same(['liana', 'secret:with-colon'], wgs_tracking_basic_credentials(['HTTP_AUTHORIZATION' => 'Basic ' . base64_encode('liana:secret:with-colon')]), 'Forwarded Basic auth is parsed.');
 
+$configPath = sys_get_temp_dir() . '/wgs-email-tracking-config-' . bin2hex(random_bytes(6)) . '.php';
+file_put_contents($configPath, "<?php\nreturn ['username' => 'liana', 'password' => 'private-pass'];\n");
+
+putenv('WGS_EMAIL_TRACKING_USER=environment-user');
+putenv('WGS_EMAIL_TRACKING_PASSWORD=environment-pass');
+putenv('WGS_EMAIL_TRACKING_CONFIG=' . $configPath);
+assert_same(['environment-user', 'environment-pass'], wgs_tracking_dashboard_credentials(), 'Complete environment credentials take priority.');
+
+putenv('WGS_EMAIL_TRACKING_PASSWORD');
+assert_same(['liana', 'private-pass'], wgs_tracking_dashboard_credentials(), 'Private config is the fallback when environment credentials are incomplete.');
+
+putenv('WGS_EMAIL_TRACKING_USER');
+putenv('WGS_EMAIL_TRACKING_CONFIG');
+assert_same(['liana', 'private-pass'], wgs_tracking_dashboard_credentials($configPath), 'Private dashboard config is read.');
+assert_same(['', ''], wgs_tracking_dashboard_credentials($configPath . '.missing'), 'Missing dashboard config fails closed.');
+@unlink($configPath);
+
 $first = new DateTimeImmutable('2026-09-18T10:00:00+00:00');
 $second = new DateTimeImmutable('2026-09-18T11:30:00+00:00');
 assert_same(true, wgs_tracking_record_open('campaign-wgs-123-a1b2c3d4', $second, 'GoogleImageProxy'), 'First event writes.');
@@ -27,6 +44,7 @@ assert_same(true, wgs_tracking_record_open('campaign-wgs-123-a1b2c3d4', $first, 
 
 $events = wgs_tracking_read_events($logPath);
 assert_same(2, count($events), 'Both events are read.');
+assert_same(['recipient_id', 'opened_at_utc', 'client'], array_keys($events[0]), 'Tracking events contain only privacy-minimised fields.');
 $summary = wgs_tracking_summarize($events);
 assert_same(1, count($summary), 'Events are grouped by recipient.');
 assert_same(2, $summary[0]['open_count'], 'Open loads are counted.');

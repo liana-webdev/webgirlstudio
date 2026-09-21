@@ -8,8 +8,7 @@ header("Content-Security-Policy: default-src 'none'; style-src 'unsafe-inline'; 
 header('X-Content-Type-Options: nosniff');
 header('Referrer-Policy: no-referrer');
 
-$expectedUser = trim((string) getenv('WGS_EMAIL_TRACKING_USER'));
-$expectedPassword = (string) getenv('WGS_EMAIL_TRACKING_PASSWORD');
+[$expectedUser, $expectedPassword] = wgs_tracking_dashboard_credentials();
 if ($expectedUser === '' || $expectedPassword === '') {
     http_response_code(503);
     header('Content-Type: text/plain; charset=UTF-8');

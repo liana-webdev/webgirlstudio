@@ -46,9 +46,22 @@ the recipient email address or IP address.
 
 Set `WGS_EMAIL_TRACKING_USER` and `WGS_EMAIL_TRACKING_PASSWORD` in the production
 environment, then view the private dashboard at
-`https://webgirl.studio/email-track/dashboard.php`. The dashboard fails closed
-when either credential is absent. Use a long, unique password and keep it out of
-Git. `storage/` must remain writable and blocked from direct web access.
+`https://webgirl.studio/email-track/dashboard.php`.
+
+On classic Hostinger hosting, Apache `SetEnv` values may not reach PHP. In that
+case, create `wgs-private/email-tracking.php` one directory above `public_html`:
+
+```php
+<?php
+return [
+    'username' => 'liana',
+    'password' => 'use-a-long-unique-password',
+];
+```
+
+Do not place that file in Git or inside `public_html`. The dashboard fails closed
+when either credential is absent. `storage/` must remain writable and blocked
+from direct web access.
 
 Generate a unique pixel for a CRM lead before sending an HTML email:
 
