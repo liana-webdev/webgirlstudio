@@ -20,6 +20,11 @@ assert_same('Gmail image proxy', wgs_tracking_client('GoogleImageProxy'), 'Gmail
 assert_same('https://webgirl.studio/email-track/open.php?id=campaign-wgs-123-a1b2c3d4', wgs_tracking_pixel_url('campaign-wgs-123-a1b2c3d4'), 'Pixel URL is stable.');
 assert_same(['liana', 'secret:with-colon'], wgs_tracking_basic_credentials(['HTTP_AUTHORIZATION' => 'Basic ' . base64_encode('liana:secret:with-colon')]), 'Forwarded Basic auth is parsed.');
 
+$configPath = sys_get_temp_dir() . '/wgs-email-tracking-config-' . bin2hex(random_bytes(6)) . '.php';
+file_put_contents($configPath, "<?php\nreturn ['username' => 'liana', 'password' => 'private-pass'];\n");
+assert_same(['liana', 'private-pass'], wgs_tracking_dashboard_credentials($configPath), 'Private dashboard config is read.');
+@unlink($configPath);
+
 $first = new DateTimeImmutable('2026-09-18T10:00:00+00:00');
 $second = new DateTimeImmutable('2026-09-18T11:30:00+00:00');
 assert_same(true, wgs_tracking_record_open('campaign-wgs-123-a1b2c3d4', $second, 'GoogleImageProxy'), 'First event writes.');
